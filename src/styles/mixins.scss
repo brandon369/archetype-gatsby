@@ -1,0 +1,107 @@
+@import "./variables.scss";
+
+/* Mixins */
+
+/* Mediaqueries */
+
+@mixin from($size) {
+  @media (max-width: $size) {
+    @content;
+  }
+}
+
+@mixin fromy($size) {
+  @media (max-height: $size) {
+    @content;
+  }
+}
+
+/* Fontfaces */
+
+@mixin fontface($name, $file) {
+  $path: "../assets/fonts/" + $name + "/" + $file;
+
+  @font-face {
+    font-family: "#{$name}";
+    src: url($path + ".eot");
+    src: url($path + ".eot?#iefix") format("embedded-opentype"),
+    url($path + ".woff") format("woff"),
+    url($path + ".ttf") format("truetype"),
+    url($path + ".svg#" + $name) format("svg");
+    font-weight: normal;
+    font-style: normal;
+  }
+}
+
+
+@mixin section() {
+  margin: 12rem 0;
+  @include from($large) {
+    margin: 6rem 0;
+  }
+}
+
+
+@mixin container() {
+  width: 95%;
+  max-width: 1170px;
+  margin: 0 auto;
+
+}
+
+/* Fonts Sizes */
+
+@mixin txtSizes($type) {
+  letter-spacing: 0.1rem;
+  line-height: 1.2em;
+
+  @if $type == h1 {
+    font-size: 4.2rem;
+    font-weight: 300;
+    font-family: $Poppins-Light;
+    color: $brown;
+
+    @include from($large) {
+      font-size: 3.2rem;
+    }
+
+  } @else if $type == h2 {
+    font-family: $Poppins-Light;
+    font-weight: 300;
+    font-size: 2.4rem;
+    color: #222;
+
+
+  } @else if $type == h3 {
+    font-size: 2.8rem;
+    @include from($large) {
+      font-size: 2.4rem;
+    }
+
+
+  } @else if $type == p {
+    font-family: $Poppins-Light;
+    font-weight: 300;
+    font-size: 1.8rem;
+    color: $gray;
+    line-height: 1.4em;
+    @include from($large) {
+      font-size: 1.4rem;
+    }
+
+    b {
+      //font-family: $Montserrat-Bold;
+    }
+  }
+
+}
+
+
+@mixin parallax($minHeight, $url){
+  background-position: top center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  min-height: $minHeight;
+  background-image: url($url);
+}

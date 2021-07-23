@@ -1,16 +1,24 @@
+
+const dotenv = require("dotenv")
+dotenv.config({ path: "./env/.env.development" })
+
+
 module.exports = {
   siteMetadata: {
     siteUrl: "https://www.yourdomain.tld",
-    title: "ccl",
+    title: "title",
+    author: `@brandonarrieta.dev`,
+    locale: "es-CO",
+    description: 'description'
   },
   plugins: [
-    {
-      resolve: "gatsby-source-contentful",
-      options: {
-        accessToken: "",
-        spaceId: "",
-      },
-    },
+    // {
+    //   resolve: "gatsby-source-contentful",
+    //   options: {
+    //     accessToken: "",
+    //     spaceId: "",
+    //   },
+    // },
     "gatsby-plugin-sass",
     "gatsby-plugin-image",
     "gatsby-plugin-react-helmet",
@@ -18,7 +26,13 @@ module.exports = {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        icon: "src/images/icon.png",
+        name: `name`,
+        short_name: `name`,
+        start_url: `/`,
+        background_color: `#94573A`,
+        theme_color: `#94573A`,
+        display: `minimal-ui`,
+        icon: `src/assets/images/icon.png` // This path is relative to the root of the site.
       },
     },
     "gatsby-plugin-sharp",
